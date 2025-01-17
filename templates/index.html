@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직업 추천 시스템</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="container">
+        <h1>직업 추천 시스템</h1>
+
+        <div class="inputs">
+            <label for="total-jobs">직업 수: </label>
+            <input type="number" id="total-jobs" value="100">
+            <p class="hint">높을 수록 결과는 더 정확해지지만, 시간은 오래걸립니다</p>
+        </div>
+
+        <div class="inputs">
+            <label for="salary-weight">연봉 가중치: </label>
+            <input type="range" id="salary-weight" min="0" max="1" step="0.01" value="0.25">
+            <input type="number" id="salary-weight-input" value="0.25">
+
+            <label for="entry-barrier-weight">진입 장벽 가중치: </label>
+            <input type="range" id="entry-barrier-weight" min="0" max="1" step="0.01" value="0.25">
+            <input type="number" id="entry-barrier-weight-input" value="0.25">
+
+            <label for="workload-weight">업무 강도 가중치: </label>
+            <input type="range" id="workload-weight" min="0" max="1" step="0.01" value="0.25">
+            <input type="number" id="workload-weight-input" value="0.25">
+
+            <label for="satisfaction-weight">직업 만족도 가중치: </label>
+            <input type="range" id="satisfaction-weight" min="0" max="1" step="0.01" value="0.25">
+            <input type="number" id="satisfaction-weight-input" value="0.25">
+
+            <button id="predict-button">직업 추천 시작</button>
+        </div>
+
+        <div id="results"></div>
+
+        <button id="load-more-button" style="display: none;">더 보기</button>
+
+        <div id="loading" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+
+        <div id="modal-background"></div>
+
+        <div id="modal">
+            <div>
+                <h2 id="modal-job-name"></h2>
+                <p id="modal-description"></p>
+                <p id="modal-required-skills"></p>
+                <p id="modal-training-programs"></p>
+                <p id="modal-research-opportunities"></p>
+                <p id="modal-related-orgs"></p>
+                <p id="modal-aptitude"></p>
+                <p id="modal-depart-name"></p>
+                <button id="modal-close" class="close-btn">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="resources">
+    <h2>교육 및 대학 자료</h2>
+    <button id="toggle-resources-button">펼치기</button>
+    <ul style="display: none;">
+        <li><a href="https://www.moe.go.kr/boardCnts/listRenew.do?boardID=294" target="_blank">교육부 발표 자료</a></li>
+        <li><a href="https://admission.snu.ac.kr/" target="_blank">서울대학교 입학처</a></li>
+        <li><a href="https://admission.yonsei.ac.kr/" target="_blank">연세대학교 입학처</a></li>
+        <li><a href="https://oku.korea.ac.kr/oku/index.do" target="_blank">고려대학교 입학처</a></li>
+        <li><a href="https://admission.sogang.ac.kr/" target="_blank">서강대학교 입학처</a></li>
+        <li><a href="https://admission.skku.edu/" target="_blank">성균관대학교 입학처</a></li>
+        <li><a href="https://go.hanyang.ac.kr/gate.do" target="_blank">한양대학교 입학처</a></li>
+        <li><a href="https://admission.cau.ac.kr/" target="_blank">중앙대학교 입학처</a></li>
+        <li><a href="https://iphak.khu.ac.kr/main.do" target="_blank">경희대학교 입학처</a></li>
+        <li><a href="https://adms.hufs.ac.kr/index.do" target="_blank">한국외국어대학교 입학처</a></li>
+        <li><a href="https://admission.uos.ac.kr/" target="_blank">서울시립대학교 입학처</a></li>
+        <li><a href="https://enter.konkuk.ac.kr/main.do" target="_blank">건국대학교 입학처</a></li>
+        <li><a href="https://ipsi.dongguk.edu/admission/html/main/main.asp" target="_blank">동국대학교 입학처</a></li>
+        <li><a href="https://admission.hongik.ac.kr/" target="_blank">홍익대학교 입학처</a></li>
+    </ul>
+</div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
